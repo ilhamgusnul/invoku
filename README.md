@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Invoku
+
+Invoku is a minimalist, open-source invoice generator designed with simplicity and elegance in mind. Built to help freelancers and small businesses manage their invoices effortlessly, it features a clean aesthetic inspired by modern design principles.
+
+## Features
+
+- Create and manage invoices easily.
+- Manage client databases and business profiles.
+- Generate public links for clients to view and download their invoices.
+- Built-in review system for clients to provide feedback.
+- Secure authentication and data protection using Supabase Row Level Security.
+- Fast and responsive interface powered by Next.js and Tailwind CSS.
+
+## Technology Stack
+
+- Framework: Next.js (App Router)
+- Database and Authentication: Supabase
+- Styling: Tailwind CSS
+- Form Validation: Zod and React Hook Form
+- Deployment: Vercel
 
 ## Getting Started
 
-First, run the development server:
+To run this project locally, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Install the dependencies by running:
+
+```bash
+npm install
+```
+
+3. Set up your Supabase project and add your environment variables to a `.env.local` file:
+
+```
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Database Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project requires specific database schemas and Row Level Security (RLS) policies to function securely. The SQL migration files can be found in the `supabase/migrations` directory. Apply these to your Supabase project to create the necessary tables for business profiles, clients, invoices, and invoice items.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open-source and available for anyone to use, modify, and distribute.
