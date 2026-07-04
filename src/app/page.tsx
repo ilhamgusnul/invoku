@@ -1,10 +1,8 @@
-'use client'
-
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { PlayCircle, Check, FileText, Link as LinkIcon, Briefcase, DownloadCloud, Star, Download, User } from 'lucide-react'
 import { getPublicReviews } from '@/lib/actions/review'
+import { ScrollAnimation } from '@/components/ScrollAnimation'
 
 type PublicReview = {
   id: string
@@ -14,38 +12,12 @@ type PublicReview = {
   author_avatar: string | null
 }
 
-export default function Home() {
-  const [reviews, setReviews] = useState<PublicReview[]>([])
-
-  useEffect(() => {
-    getPublicReviews().then((data) => {
-      setReviews(data)
-    })
-    
-    const observerOptions = {
-      threshold: 0.1
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100', 'translate-y-0')
-          entry.target.classList.remove('opacity-0', 'translate-y-10')
-        }
-      })
-    }, observerOptions)
-
-    // Apply fade-in to feature cards and testimonials
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-      el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10')
-      observer.observe(el)
-    })
-
-    return () => observer.disconnect()
-  }, [])
+export default async function Home() {
+  const reviews = await getPublicReviews()
 
   return (
     <div className="font-sans text-body-lg overflow-x-hidden bg-[#fafafa] text-[#1d1d1f] antialiased">
+      <ScrollAnimation />
       {/* TopNavBar */}
       <nav className="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md w-full top-0 sticky z-50 border-b border-outline-variant/30 dark:border-outline/20">
         <div className="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-16">
@@ -208,7 +180,7 @@ export default function Home() {
                   <div className="flex items-center gap-4">
                     {review.author_avatar ? (
                       <div className="w-12 h-12 rounded-full overflow-hidden bg-outline-variant relative shrink-0">
-                        <Image fill alt="User Avatar" className="object-cover" src={review.author_avatar} />
+                        <Image fill alt="User Avatar" sizes="48px" className="object-cover" src={review.author_avatar} />
                       </div>
                     ) : (
                       <div className="w-12 h-12 rounded-full overflow-hidden bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
