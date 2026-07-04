@@ -53,11 +53,16 @@ export function LoginForm() {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
-          <Button type="submit" className="w-full rounded-full bg-[#0066cc] text-white hover:bg-[#0071e3]" disabled={isPending}>
+          <Button type="submit" className="w-full rounded-full bg-primary-container text-white hover:opacity-90" disabled={isPending}>
             {isPending ? 'Memproses...' : 'Masuk'}
           </Button>
-          <div className="text-[14px] text-center text-[#7a7a7a]">
-            Belum punya akun? <Link href="/signup" className="text-[#0066cc] hover:underline">Daftar sekarang</Link>
+          <div className="flex flex-col space-y-2 w-full text-center mt-2">
+            <Link href="/forgot-password" className="text-[14px] text-primary-container hover:underline font-medium">
+              Lupa Password?
+            </Link>
+            <div className="text-[14px] text-[#7a7a7a]">
+              Belum punya akun? <Link href="/signup" className="text-primary-container hover:underline">Daftar sekarang</Link>
+            </div>
           </div>
         </CardFooter>
       </form>
