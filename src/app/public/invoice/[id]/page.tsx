@@ -2,9 +2,7 @@ import { getPublicInvoice } from '@/lib/actions/invoice'
 import { notFound } from 'next/navigation'
 import { formatCurrency } from '@/lib/utils'
 import Image from 'next/image'
-import dynamic from 'next/dynamic'
-
-const PrintButton = dynamic(() => import('@/components/invoice/PrintButton').then(mod => mod.PrintButton), { ssr: false })
+import { PrintButton } from '@/components/invoice/PrintButton'
 
 import type { Metadata } from 'next'
 
