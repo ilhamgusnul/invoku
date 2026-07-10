@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     // Gunakan service role key untuk melewati RLS, karena ini dipanggil otomatis oleh Cron
